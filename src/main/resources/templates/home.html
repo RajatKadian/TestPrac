@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>Hello</h1>
+
+    <form th:action="@{/register}" th:object="${users}" method="post">
+        <label>ID</label>
+        <input type="text" id="id">
+        <label>Name</label>
+        <input type="text" name="name">
+
+        <button type="submit"  >Save</button>
+
+
+    </form>
+
+    <table >
+        <thead>
+        <tr>
+            <th>ID</th><th>name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p:${listStudents}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td>
+                <a  th:href="@{delete(id=${p.id})}">Delete</a>
+
+            </td>
+            <td>
+                <a th:href="@{edit(id=${p.id})}">
+                    Edit</a>
+            </td>
+
+            </td>
+
+
+        </tr>
+        <br>
+
+        <h1>Add Students</h1>
+
+
+<!--        <form th:action="@{/register}" th:object="${user}" method="post" >-->
+<!--            <div>-->
+<!--                <label>Name</label>-->
+<!--                <input type="text"  id="name"  name="name" >-->
+
+
+<!--            </div>-->
+<!--            <div>-->
+<!--                <label>ID</label>-->
+<!--                <input type="text"  id="id"  name="id" >-->
+
+<!--            </div>-->
+
+<!--            <button type="submit" class="btn-primary" th:href="@{/}" >Save</button>-->
+
+<!--        </form>-->
+
+
+
+        <br>
+        <br>
+
+
+
+
+        </tbody>
+    </table>
+
+    <br>
+
+
+
+    <label>Choose a car:</label>
+    <select  >
+        <option th:each="listStudents: ${listStudents}"
+                th:value="${listStudents.id}"
+                th:text="${listStudents.name}"></option>
+<!--        <option th:text="${p.id}"</option>-->
+<!--        <option th:text="${p.Name}">Opel</option>-->
+
+    </select>
+    <br><br>
+
+</body>
+</html>
